@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fun Facts About Tech Companies</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .fact {
+            margin: 15px 0;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #fafafa;
+        }
+
+        .fact h2 {
+            margin: 0;
+            font-size: 1.2em;
+            color: #007BFF;
+        }
+
+        .fact p {
+            margin: 5px 0 0;
+        }
+
+        button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Fun Facts About Tech Companies</h1>
+        <div id="facts-container"></div>
+        <button id="show-fact-button">Show Next Fact</button>
+    </div>
+    <script>
+        const funFacts = [
+            {
+                "fact": "Flexible Hours",
+                "description": "Many tech companies offer flexible working hours, allowing employees to choose when they work best."
+            },
+            {
+                "fact": "Remote Work",
+                "description": "The rise of remote work has made it possible for tech employees to work from anywhere in the world, from coffee shops to beaches."
+            },
+            {
+                "fact": "Casual Dress Code",
+                "description": "Most tech companies have a casual dress code, with many employees opting for jeans and t-shirts over formal attire."
+            },
+            {
+                "fact": "Free Snacks and Drinks",
+                "description": "It's common for tech companies to provide free snacks, drinks, and even meals to keep employees fueled throughout the day."
+            },
+            {
+                "fact": "Innovative Workspaces",
+                "description": "Many tech companies invest in creative office designs, featuring open spaces, game rooms, and relaxation areas to foster collaboration and creativity."
+            },
+            {
+                "fact": "Continuous Learning",
+                "description": "Tech companies often encourage continuous learning, offering access to online courses, workshops, and conferences."
+            },
+            {
+                "fact": "Diverse Teams",
+                "description": "Many tech companies prioritize diversity and inclusion, actively working to create teams that reflect a variety of backgrounds and perspectives."
+            },
+            {
+                "fact": "Hackathons",
+                "description": "Companies often host hackathons, where employees can work on side projects, collaborate with colleagues, and potentially develop new products."
+            },
+            {
+                "fact": "Work-Life Balance",
+                "description": "While tech jobs can be demanding, many companies emphasize work-life balance, promoting mental health and well-being."
+            },
+            {
+                "fact": "Stock Options",
+                "description": "Employees at tech companies often receive stock options as part of their compensation, allowing them to benefit from the company's growth."
+            },
+            {
+                "fact": "Pet-Friendly Offices",
+                "description": "Some tech companies allow employees to bring their pets to work, creating a more relaxed and enjoyable atmosphere."
+            },
+            {
+                "fact": "Health and Wellness Programs",
+                "description": "Many tech firms offer health and wellness programs, including gym memberships, yoga classes, and mental health resources."
+            },
+            {
+                "fact": "Team Building Activities",
+                "description": "Companies frequently organize team-building activities, from escape rooms to outdoor adventures, to strengthen team dynamics."
+            },
+            {
+                "fact": "Open Communication",
+                "description": "Tech companies often promote open communication, encouraging employees to share ideas and feedback with management."
+            },
+            {
+                "fact": "Diverse Career Paths",
+                "description": "There are numerous career paths in tech, from software development to product management, data analysis, and UX design."
+            },
+            {
+                "fact": "Rapid Change",
+                "description": "The tech industry is known for its fast-paced environment, with new technologies and trends emerging regularly."
+            },
+            {
+                "fact": "Impactful Work",
+                "description": "Many tech employees feel their work has a significant impact on society, whether through developing new technologies or improving existing ones."
+            },
+            {
+                "fact": "Networking Opportunities",
+                "description": "Working in tech provides ample networking opportunities, both within the company and at industry events."
+            },
+            {
+                "fact": "Mentorship Programs",
+                "description": "Many tech companies have mentorship programs to help employees grow their skills and advance their careers."
+            },
+            {
+                "fact": "Job Security",
+                "description": "The demand for tech talent continues to grow, providing a level of job security that is appealing to many professionals in the field."
+            }
+        ];
+
+        let currentFactIndex = 0;
+
+        const factsContainer = document.getElementById('facts-container');
+        const showFactButton = document.getElementById('show-fact-button');
+
+        showFactButton.addEventListener('click', () => {
+            if (currentFactIndex < funFacts.length) {
+                const fact = funFacts[currentFactIndex];
+                const factDiv = document.createElement('div');
+                factDiv.classList.add('fact');
+                factDiv.innerHTML = `<h2>${fact.fact}</h2><p>${fact.description}</p>`;
+                factsContainer.appendChild(factDiv);
+                currentFactIndex++;
+            } else {
+                showFactButton.disabled = true; // Disable button when all facts are shown
+                showFactButton.textContent = "No more facts!";
+            }
+        });
+    </script>
+</body>
+</html>
