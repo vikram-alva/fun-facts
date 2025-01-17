@@ -32,6 +32,7 @@
             border: 1px solid #ddd;
             border-radius: 5px;
             background-color: #fafafa;
+            display: none; /* Initially hide the fact */
         }
 
         .fact h2 {
@@ -50,22 +51,14 @@
             padding: 10px 20px;
             font-size: 16px;
             cursor: pointer;
-            background-color: #007BFF;
-            color: white;
-            border: none;
-            border-radius: 5px;
-        }
-
-        button:hover {
-            background-color: #0056b3;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Fun Facts About Tech Companies</h1>
+        <button id="show-fact-button">Show Random Fact</button>
         <div id="facts-container"></div>
-        <button id="show-fact-button">Show Next Fact</button>
     </div>
     <script>
         const funFacts = [
@@ -151,24 +144,27 @@
             }
         ];
 
-        let currentFactIndex = 0;
-
         const factsContainer = document.getElementById('facts-container');
-        const showFactButton = document.getElementById('show-fact-button');
+        const button = document.getElementById('show-fact-button');
 
-        showFactButton.addEventListener('click', () => {
-            if (currentFactIndex < funFacts.length) {
-                const fact = funFacts[currentFactIndex];
-                const factDiv = document.createElement('div');
-                factDiv.classList.add('fact');
-                factDiv.innerHTML = `<h2>${fact.fact}</h2><p>${fact.description}</p>`;
-                factsContainer.appendChild(factDiv);
-                currentFactIndex++;
-            } else {
-                showFactButton.disabled = true; // Disable button when all facts are shown
-                showFactButton.textContent = "No more facts!";
-            }
+        button.addEventListener('click', () => {
+            // Clear previous facts
+            factsContainer.innerHTML = '';
+
+            // Get a random fact
+            const randomIndex = Math.floor(Math.random() * funFacts.length);
+            const randomFact = funFacts[randomIndex];
+
+            // Create a new fact div
+            const factDiv = document.createElement('div');
+            factDiv.classList.add('fact');
+            factDiv.innerHTML = `<h2>${randomFact.fact}</h2><p>${randomFact.description}</p>`;
+            factsContainer.appendChild(factDiv);
+
+            // Show the fact
+            factDiv.style.display = 'block';
         });
     </script>
 </body>
 </html>
+
